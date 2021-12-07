@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:xtreme_skills/login_screen/register.dart';
 import 'package:xtreme_skills/models/post_model.dart';
+import 'package:xtreme_skills/screens/splash.dart';
 import 'package:xtreme_skills/widgets/action_button.dart';
 import 'package:xtreme_skills/widgets/custom_buttons.dart';
 import 'package:xtreme_skills/widgets/cus_text_field.dart';
@@ -17,19 +18,19 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   List<PostModel> postlist = [];
 
-  Future<List<PostModel>> getPostApi() async {
-    final response =
-        await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
-    var data = jsonDecode(response.body.toString());
-    if (response.statusCode == 200) {
-      for (Map i in data) {
-        postlist.add(PostModel.fromJson(i));
-      }
-      return postlist;
-    } else {
-      return postlist;
-    }
-  }
+  // Future<List<PostModel>> getPostApi() async {
+  //   final response =
+  //       await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+  //   var data = jsonDecode(response.body.toString());
+  //   if (response.statusCode == 200) {
+  //     for (Map i in data) {
+  //       postlist.add(PostModel.fromJson(i));
+  //     }
+  //     return postlist;
+  //   } else {
+  //     return postlist;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +85,7 @@ class _LoginState extends State<Login> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => RegisterView()));
+                            builder: (context) => SplashScreen()));
                   })
             ],
           ),

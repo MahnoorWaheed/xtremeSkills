@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:xtreme_skills/models/post_model.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -9,44 +13,28 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  List<Map<String, dynamic>> dummyData = [
-    {
-      "title": "Auth",
-      "description": "Authentication",
-    },
-    {
-      "title": "Json",
-      "description": "Json Data",
-    },
-    {
-      "title": "User Interface",
-      "description": "UserInterface application",
-    },
-    {
-      "title": "Social Accounts",
-      "description": "Google, Facebook, Firebase",
-    },
-    {
-      "title": "API Integration",
-      "description": "API Integration",
-    },
-    {
-      "title": "Serialization",
-      "description": "Serialization data",
-    },
-    {
-      "title": "FAB",
-      "description": "Floating Action Button",
-    },
-    {
-      "title": "Elevated Button",
-      "description": "notify",
-    },
-    {
-      "title": "Listview",
-      "description": "notify",
-    },
-  ];
+  List<PostModel> postlist = [];
+  Future<List<PostModel>> getPostApi() async {
+    final response =
+        await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+    var data = jsonDecode(response.body.toString());
+    if (response.statusCode == 200) {
+      for (Map i in data) {
+        postlist.add(PostModel.fromJson(i));
+      }
+      return postlist;
+    } else {
+      return postlist;
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getPostApi();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,15 +93,27 @@ class _SplashScreenState extends State<SplashScreen> {
               color: Colors.purple[50],
               child: ListView.builder(
                   physics: BouncingScrollPhysics(),
-                  itemCount: dummyData.length,
+                  itemCount: postlist.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      onTap: () {},
-                      title: Text('${dummyData[index]['title']}'),
-                      subtitle: Text('${dummyData[index]['description']}'),
-                      leading: Icon(Icons.design_services),
-                      trailing: Icon(Icons.add),
-                    );
+                    return Card(
+                        child: Padding(
+                      padding:
+                          const EdgeInsets.only(top: 32, bottom: 32, left: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(postlist[index].title!),
+                          Text('${postlist[index].id}'),
+                        ],
+                      ),
+                    ));
+                    // return ListTile(
+                    //   onTap: () {},
+                    //   title: Text('${dummyData[index]['title']}'),
+                    //   subtitle: Text('${dummyData[index]['description']}'),
+                    //   leading: Icon(Icons.design_services),
+                    //   trailing: Icon(Icons.add),
+                    // );
                   }),
             )
           ],
