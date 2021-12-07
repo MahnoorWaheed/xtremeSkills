@@ -1,14 +1,10 @@
 class PostModel {
-  PostModel({
-      int? userId, 
-      int? id, 
-      String? title, 
-      String? body,}){
+  PostModel({int? userId, int? id, String? title, String? body}) {
     _userId = userId;
     _id = id;
     _title = title;
     _body = body;
-}
+  }
 
   PostModel.fromJson(dynamic json) {
     _userId = json['userId'];
@@ -34,5 +30,4 @@ class PostModel {
     map['body'] = _body;
     return map;
   }
-
 }
