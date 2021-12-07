@@ -4,16 +4,12 @@
 /// body : "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
 
 class PostModel {
-  PostModel({
-      int? userId, 
-      int? id, 
-      String? title, 
-      String? body,}){
+  PostModel({int? userId, int? id, String? title, String? body}) {
     _userId = userId;
     _id = id;
     _title = title;
     _body = body;
-}
+  }
 
   PostModel.fromJson(dynamic json) {
     _userId = json['userId'];
@@ -39,5 +35,4 @@ class PostModel {
     map['body'] = _body;
     return map;
   }
-
 }
