@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:xtreme_skills/login_screen/register.dart';
 import 'package:xtreme_skills/models/post_model.dart';
+import 'package:xtreme_skills/screens/splash.dart';
 import 'package:xtreme_skills/widgets/action_button.dart';
 import 'package:xtreme_skills/widgets/custom_buttons.dart';
 import 'package:xtreme_skills/widgets/cus_text_field.dart';
@@ -52,11 +53,7 @@ class _LoginState extends State<Login> {
           ),
           CusTextField(label: "Enter your Email"),
           CusTextField(label: "Enter your Password"),
-          ActionButton(
-              title: "Login",
-              onTap: () {
-                getPostApi();
-              }),
+          ActionButton(title: "Login", onTap: () {}),
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
