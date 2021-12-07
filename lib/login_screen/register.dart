@@ -17,47 +17,43 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Column(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Ui", style: GoogleFonts.lato(fontSize: 50)),
-                  Text("Lover",
-                      style: GoogleFonts.lato(
-                          fontSize: 50,
-                          color: Color(0xFF7522ac),
-                          fontWeight: FontWeight.bold)),
-                ],
-              ),
-              Text("A Gateway Of UI Design",
-                  style: GoogleFonts.lato(fontSize: 15, color: Colors.grey)),
-              CusTextField(label: 'Enter your name'),
-              CusTextField(label: 'Enter your email'),
-              CusTextField(label: 'Enter your password'),
-              CusTextField(label: 'Re-enter your password'),
-              ActionButton(
-                onTap: () {},
-                title: 'Sign Up',
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Already have an Account? "),
-                  MyGestures(
-                      text: "Login Here",
-                      ontap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Login()),
-                        );
-                      })
-                ],
-              ),
+              Text("Ui", style: GoogleFonts.lato(fontSize: 50)),
+              Text("Lover",
+                  style: GoogleFonts.lato(
+                      fontSize: 50,
+                      color: Color(0xFF7522ac),
+                      fontWeight: FontWeight.bold)),
+            ],
+          ),
+          Text("A Gateway Of UI Design",
+              style: GoogleFonts.lato(fontSize: 15, color: Colors.grey)),
+          CusTextField(label: 'Enter your name'),
+          CusTextField(label: 'Enter your email'),
+          CusTextField(label: 'Enter your password'),
+          CusTextField(label: 'Re-enter your password'),
+          ActionButton(
+            onTap: () {},
+            title: 'Sign Up',
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Already have an Account? "),
+              MyGestures(
+                  text: "Login Here",
+                  ontap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Login()),
+                    );
+                  })
             ],
           ),
         ],
